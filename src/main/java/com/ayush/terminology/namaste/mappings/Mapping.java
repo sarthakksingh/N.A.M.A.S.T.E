@@ -1,5 +1,6 @@
-package com.ayush.terminology.namaste.model;
+package com.ayush.terminology.namaste.mappings;
 
+import com.ayush.terminology.namaste.model.Concept;
 import jakarta.persistence.*;
 import lombok.*;
 
