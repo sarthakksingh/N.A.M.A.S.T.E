@@ -79,6 +79,22 @@ public class ConceptService {
 
         return suggestion;
     }
+    /**
+     * Translate from one code system to another
+     */
+    public SuggestionDTO translateCode(String code, String fromSystem, String toSystem) {
+        // Find the source concept
+        Optional<Concept> sourceConcept = conceptRepository
+                .findByCodeAndSystem(code, fromSystem);
+
+        if (sourceConcept.isEmpty()) {
+            throw new RuntimeException("Code not found: " + code);
+        }
+
+        // Build suggestion with all related codes
+        return buildSuggestionFromConcept(sourceConcept.get());
+    }
+
 
     /**
      * Get a concept by code
