@@ -7,10 +7,9 @@ import com.google.firebase.FirebaseOptions;
 import org.springframework.context.annotation.Configuration;
 
 import jakarta.annotation.PostConstruct;
-import org.springframework.core.io.ClassPathResource;
 
-import java.io.FileInputStream;
 import java.io.InputStream;
+import java.io.ByteArrayInputStream;
 
 @Configuration
 public class FirebaseConfig {
