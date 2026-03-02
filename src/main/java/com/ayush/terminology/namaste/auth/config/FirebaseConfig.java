@@ -18,8 +18,14 @@ public class FirebaseConfig {
     @PostConstruct
     public void init() {
         try {
+            String firebaseConfig = System.getenv("FIREBASE_CONFIG");
+
+            if (firebaseConfig == null) {
+                throw new RuntimeException("FIREBASE_CONFIG not set");
+            }
+
             InputStream serviceAccount =
-                    new ClassPathResource("firebase-service-account.json").getInputStream();
+                    new ByteArrayInputStream(firebaseConfig.getBytes());
 
             FirebaseOptions options = FirebaseOptions.builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
